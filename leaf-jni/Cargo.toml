@@ -1,0 +1,29 @@
+[package]
+name = "leaf-jni"
+version = "0.1.0"
+authors = ["eycorsican <eric.y.corsican@gmail.com>"]
+edition = "2021"
+
+[lib]
+name = "leaf"
+path = "src/lib.rs"
+crate-type = ["dylib"]
+
+[features]
+default = [
+    "default-ring",
+]
+
+default-ring = [
+    "leaf/default-ring",
+]
+
+default-openssl = [
+    "leaf/default-openssl",
+]
+
+auto-reload = ["leaf/auto-reload"]
+
+[dependencies]
+leaf = { path = "../leaf", default-features = false, optional = true }
+jni = { version = "0.20.0", default-features = false }
